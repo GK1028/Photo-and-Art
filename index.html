@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Photo and Art Market Place BD</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              'sans': ['Poppins', 'sans-serif'],
+              'display': ['Orbitron', 'sans-serif'],
+            },
+            colors: {
+              'primary': '#6A0DAD',
+              'secondary': '#00F5D4',
+              'accent': '#FF00A8',
+              'brand-red': '#ff0000',
+              'brand-blue': '#3B82F6',
+              'brand-pink': '#ec4899',
+              'brand-green': '#047857',
+              'brand-purple': '#7e22ce',
+            },
+            animation: {
+              'gradient-x': 'gradient-x 15s ease infinite',
+              'fade-in-up': 'fade-in-up 0.5s ease-out forwards',
+            },
+            keyframes: {
+              'gradient-x': {
+                '0%, 100%': {
+                  'background-size': '200% 200%',
+                  'background-position': 'left center'
+                },
+                '50%': {
+                  'background-size': '200% 200%',
+                  'background-position': 'right center'
+                }
+              },
+              'fade-in-up': {
+                '0%': {
+                  opacity: '0',
+                  transform: 'translateY(20px)'
+                },
+                '100%': {
+                  opacity: '1',
+                  transform: 'translateY(0)'
+                }
+              }
+            }
+          }
+        }
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.29.1",
+    "react-router-dom": "https://aistudiocdn.com/react-router-dom@^7.9.6"
+  }
+}
+</script>
+<style>
+  #splash {
+    position: fixed;
+    inset: 0;
+    background-color: #ffffff;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.8s ease-in-out;
+  }
+  #splash.splash-hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+  #splash-content {
+    text-align: center;
+  }
+  #splash-content .logo {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 1.5rem;
+    animation: splash-pulse 2.5s infinite cubic-bezier(0.4, 0, 0.6, 1);
+    border: 4px solid #6A0DAD;
+    padding: 4px;
+  }
+  #splash-content h1 {
+    display: block;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #1f2937;
+    line-height: 1.1;
+  }
+  #splash-content p {
+    font-family: 'Poppins', sans-serif;
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    color: #4b5563;
+  }
+  @keyframes splash-pulse {
+    50% {
+      transform: scale(1.05);
+    }
+  }
+
+  /* Handle dark mode splash based on system preference */
+  @media (prefers-color-scheme: dark) {
+    body:not(.light) #splash {
+      background-color: #111827;
+    }
+    body:not(.light) #splash-content h1 {
+      color: #f9fafb;
+    }
+    body:not(.light) #splash-content p {
+      color: #9ca3af;
+    }
+  }
+
+  /* Handle dark mode splash based on Tailwind's class */
+  html.dark #splash {
+      background-color: #111827;
+  }
+  html.dark #splash-content h1 {
+    color: #f9fafb;
+  }
+  html.dark #splash-content p {
+    color: #9ca3af;
+  }
+</style>
+</head>
+  <body class="font-sans bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
+    <!-- Splash -->
+    <div id="splash">
+      <div id="splash-content">
+        <img src="https://images.pexels.com/photos/326055/pexels-photo-326055.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="logo" alt="Creative Splash Image">
+        <h1>BD Best</h1><h1>Photo & Art Marketplace</h1>
+        <p>Loading your creative world...</p>
+      </div>
+    </div>
+    
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
